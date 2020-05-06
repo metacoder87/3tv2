@@ -83,6 +83,13 @@
 # number of mark values. The number of marks passed to #initialize will decide how 
 # many players are in the game.
 
+    def initialize(n, *marks)
+        @players = []
+        marks.each { |mark| players < HumanPlayer.new(mark) }
+        @current_player = players[0]
+        @board = Board.new(n)
+    end
+
 # Game#switch_turn
 # For our switching logic, we'll use a "Round Robin" strategy. This means that 
 # players continually take turns in the same order. For example, if we had players 
