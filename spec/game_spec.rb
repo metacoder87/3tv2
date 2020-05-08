@@ -25,23 +25,23 @@ describe "Game" do
       end
     end
 
-    describe "get_marks" do
-      it "should print 'Player 1 enter your mark : '" do
-        input = double(:X, :chomp=>"X")
-        allow(game).to receive(:gets).and_return(input)
+    # describe "get_marks" do
+    #   it "should print 'Player 1 enter your mark : '" do
+    #     input = double(:X, :chomp=>"X")
+    #     allow(game).to receive(:gets).and_return(input)
 
-        expect { game.get_marks }.to output(/Player 1 enter your mark : /).to_stdout
-      end
+    #     expect { game.get_marks }.to output(/Player 1 enter your mark : /).to_stdout
+    #   end
 
-      it "it should call gets.chomp to get input from the user" do
-        input = double(:X, :chomp=>"X")
-        allow(game).to receive(:gets).and_return(input)
+    #   it "it should call gets.chomp to get input from the user" do
+    #     input = double(:X, :chomp=>"X")
+    #     allow(game).to receive(:gets).and_return(input)
 
-        expect(input).to receive(:chomp)
-        expect(game).to receive(:gets)
-        game.get_marks
-      end
-    end
+    #     expect(input).to receive(:chomp)
+    #     expect(game).to receive(:gets)
+    #     game.get_marks
+    #   end
+    # end
 
 end
 
