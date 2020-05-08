@@ -23,11 +23,11 @@ class Game
 
     def initialize(n, *marks)
         @players = []
-        @marks = marks
-        marks.each do |mark| 
+        @marks = marks.each do |mark| 
             @players << HumanPlayer.new(mark)
         end
         @current_player = @players[0]
+        @current_mark = @marks[0]
         @board = Board.new(n)
     end
 
@@ -52,7 +52,8 @@ class Game
 # This method is critical for gameplay so be sure to test it in pry.
 
     def switch_turn
-        @marks.rotate
+        @current_mark = @marks.rotate!.first
+        @current_player = @players.rotate!.first
     end
 
     # def cp_mark
@@ -85,11 +86,12 @@ class Game
     def play
         while @board.empty_positions?
             @board.print
-            @board.place_mark(@current_player.get_position, cp_mark)
+            $pot = @current_player.get_position
+            @board.place_mark($pot, @current_mark)
 
-            if @board.win?(cp_mark)
+            if @board.win?(@current_mark)
                 @board.print
-                return "Victory for #{cp_mark}"
+                return "Victory for #{@current_mark}"
             else switch_turn
             end
         end

@@ -21,6 +21,8 @@ class Board
 # the grid will always be a square (meaning its height is equal to its width). This 
 # will somewhat simplify things as we refactor our other methods.
 
+    attr_reader :grid 
+
     def initialize(n)
         @grid = Array.new(n) { Array.new(n).fill(:_) }
         @length = n
@@ -45,6 +47,10 @@ class Board
             true
         else false
         end
+    end
+
+    def show_mark(position)
+       @grid[position[0]][position[1]]
     end
 
 # Board#place_mark(position, mark)
