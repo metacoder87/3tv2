@@ -21,24 +21,27 @@ class Game
 # You should also initialize an instance variable to contain the current player. 
 # By default, player one should begin as the current player.
 
-    def initialize(n)
-        @player_1_mark = $p_1_mark
-        @player_2_mark = $p_2_mark
-        @current_player = $player_1
+    def initialize(n, *marks)
+        @players = []
+        @marks = marks
+        marks.each do |mark| 
+            @players << HumanPlayer.new(mark)
+        end
+        @current_player = @players[0]
         @board = Board.new(n)
     end
 
-    def get_marks
-        puts 'Are you ready for a game of Tic-Tac-Toe'
+    # def get_marks
+    #     puts 'Are you ready for a game of Tic-Tac-Toe'
 
-        puts 'Player 1 enter your mark : '
-            $player_1 = HumanPlayer.new($p_1_mark = gets.chomp.to_sym)
+    #     puts 'Player 1 enter your mark : '
+    #         $player_1 = HumanPlayer.new($p_1_mark = gets.chomp.to_sym)
 
-        puts 'Player 2 enter your mark : '
-            $player_2 = HumanPlayer.new($p_2_mark = gets.chomp.to_sym)
+    #     puts 'Player 2 enter your mark : '
+    #         $player_2 = HumanPlayer.new($p_2_mark = gets.chomp.to_sym)
                
-        puts "Player 1 you are the #{$p_1_mark} and Player 2 you are the #{$p_2_mark}"
-    end
+    #     puts "Player 1 you are the #{$p_1_mark} and Player 2 you are the #{$p_2_mark}"
+    # end
 
 # Game#switch_turn
 
@@ -49,18 +52,15 @@ class Game
 # This method is critical for gameplay so be sure to test it in pry.
 
     def switch_turn
-        if @current_player == $player_1
-            @current_player = $player_2
-        else @current_player = $player_1
-        end
+        @marks.rotate
     end
 
-    def cp_mark
-        if @current_player == $player_1
-            @player_1_mark
-        else @player_2_mark
-        end
-    end
+    # def cp_mark
+    #     if @current_player == $player_1
+    #         @player_1_mark
+    #     else @player_2_mark
+    #     end
+    # end
 
 # Game#play
 
