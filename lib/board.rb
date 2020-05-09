@@ -1,6 +1,6 @@
             # meta_coder (Gary Miller) =)
             # gmiller052611@gmail.com
-            # https://github.com/metacoder87/App-Academy-Projects
+            # https://github.com/metacoder87/3tv2
 
 
 class Board
@@ -15,6 +15,8 @@ class Board
 # now, Board#initialize does not need to accept any arguments. Initialize the grid 
 # so that all positions are empty; this means that every position should contain an 
 # underscore ('_').
+
+# Board#initialize (refactor)
 
 # Refactor this method to accept a number argument, n. The grid should be set to a 
 # 2-dimensional array with size 'n x n', instead of '3 x 3'. It's worth noting that 
@@ -66,11 +68,6 @@ class Board
       else puts 'try again'
       end  
     end
-
-# Checkpoint - Board yet?
-# At this point you've written a few Board methods that are critical to the gameplay. 
-# Now's a good opportunity to pause and test our code for correctness. A quick way 
-# to test is to use pry.
 
 # Board#print
 
@@ -157,16 +154,8 @@ class Board
         @grid.any? { |row| row.any? { |ele| ele == :_ } }
     end
 
-# Checkpoint - You're all winners
-# If you haven't already, take a moment to use pry to test your win-checking logic. 
-# Use your #place_mark to set the board up and #print to visually verify any winners. 
-# We'll leave it to you to decide reasonable test scenarios. As a rule of thumb for 
-# methods with boolean returns, be sure to test for "false-positives" and "false-
-# negatives". In other words, verify that #win? and the related methods return true 
-# when they should and return false when they should. Don't forget to test your 
-# #empty_positions? method as well!
 end
 
             # meta_coder (Gary Miller) =)
             # gmiller052611@gmail.com
-            # https://github.com/metacoder87/App-Academy-Projects
+            # https://github.com/metacoder87/3tv2

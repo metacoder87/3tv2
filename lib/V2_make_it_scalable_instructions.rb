@@ -1,4 +1,6 @@
+
 # Version 2: Make it scalable
+
 # Make a copy of your entire tic_tac_toe_v1 directory and rename it tic_tac_toe_v2. 
 # Open the version 2 in your editor and terminal so we can refactor it to support 
 # more features. This will be our new working directory.

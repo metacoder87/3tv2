@@ -1,6 +1,6 @@
             # meta_coder (Gary Miller) =)
             # gmiller052611@gmail.com
-            # https://github.com/metacoder87/App-Academy-Projects
+            # https://github.com/metacoder87/3tv2
 
 
     require_relative 'board'
@@ -21,6 +21,14 @@ class Game
 # You should also initialize an instance variable to contain the current player. 
 # By default, player one should begin as the current player.
 
+# Game#initialize (refactor)
+
+# Refactor this method to also accept a number for the board size as the first argument.
+# An instance of Game will now need to track an array of many players instead of 
+# just two. Make this an instance variable. Allow your #initialize to accept any 
+# number of mark values. The number of marks passed to #initialize will decide how 
+# many players are in the game.
+
     def initialize(n, *marks)
         @players = []
         @marks = marks.each do |mark| 
@@ -31,51 +39,39 @@ class Game
         @board = Board.new(n)
     end
 
-    # def get_marks
-    #     puts 'Are you ready for a game of Tic-Tac-Toe'
-
-    #     puts 'Player 1 enter your mark : '
-    #         $player_1 = HumanPlayer.new($p_1_mark = gets.chomp.to_sym)
-
-    #     puts 'Player 2 enter your mark : '
-    #         $player_2 = HumanPlayer.new($p_2_mark = gets.chomp.to_sym)
-               
-    #     puts "Player 1 you are the #{$p_1_mark} and Player 2 you are the #{$p_2_mark}"
-    # end
-
 # Game#switch_turn
 
 # This method should set the current player to the other player. Calling this 
 # method repeatedly should switch the current player back and forth between the 
 # two players.
 
-# This method is critical for gameplay so be sure to test it in pry.
+# Game#switch_turn (refactor)
+
+# For our switching logic, we'll use a "Round Robin" strategy. This means that 
+# players continually take turns in the same order. For example, if we had players 
+# A, B, and C, then the turns would be ABCABCABC... until the game is over.
+
+# For simplicity, we'll always designate whoever is at the front of the array as 
+# the current player. Consider using Array#rotate! to accomplish this.
 
     def switch_turn
         @current_mark = @marks.rotate!.first
         @current_player = @players.rotate!.first
     end
 
-    # def cp_mark
-    #     if @current_player == $player_1
-    #         @player_1_mark
-    #     else @player_2_mark
-    #     end
-    # end
-
 # Game#play
 
 # This method will contain the main game loop. Here is some psuedocode for the loop:
-# while there exists empty positions on the board 
+# while there exists empty positions on the board
 #     print the board
 #     get a position from the current player
 #     place their mark at that position of the board
 #     check if that user has won
 #     if they win, print out a 'victory' message saying who won 
 #     and return to end the game
-# otherwise they did not win, so switch turns
+#     otherwise they did not win, so switch turns
 #     if we finish the while loop without returning, that means there are no more 
-#         empty positions on the board and noone has won, so print a 'draw' message
+#     empty positions on the board and noone has won, so print a 'draw' message
 #     Test your game in pry. Play a few games by creating an instance of Game and 
 #     invoking #play on it. After a game is over, be sure to create a new instance 
 #     of Game to play again, this is the only way to get a fresh board. Some 
@@ -102,4 +98,4 @@ class Game
 end
             # meta_coder (Gary Miller) =)
             # gmiller052611@gmail.com
-            # https://github.com/metacoder87/App-Academy-Projects
+            # https://github.com/metacoder87/3tv2
